@@ -1,3 +1,5 @@
+/* ===== 淡粉色主题 ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +9,9 @@
 body {
     font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #8B5F65; /* 深玫瑰色文字 */
+    /* 淡粉色渐变背景 */
+    background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
     min-height: 100vh;
     padding: 20px;
 }
@@ -16,42 +19,72 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.95); /* 半透明白色 */
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 50px rgba(255, 182, 193, 0.3); /* 粉色阴影 */
     overflow: hidden;
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    border: 1px solid rgba(255, 182, 193, 0.2); /* 浅粉色边框 */
 }
 
 header {
     text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 35px 20px;
+    /* 粉色渐变头部 */
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加粉色装饰元素 */
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    transform: rotate(15deg);
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(139, 95, 101, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .subtitle {
-    font-size: 1.2em;
-    opacity: 0.9;
+    font-size: 1.3em;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
 }
 
 .image-container {
-    background: #f8f9fa;
-    border-radius: 15px;
+    background: white;
+    border-radius: 18px;
     overflow: hidden;
     margin: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.15);
+    border: 1px solid #FFE4E8;
+    transition: all 0.3s ease;
+}
+
+.image-container:hover {
+    box-shadow: 0 15px 40px rgba(255, 182, 193, 0.25);
+    transform: translateY(-5px);
 }
 
 .image-wrapper {
     position: relative;
-    padding-top: 56.25%; /* 16:9 比例 */
+    padding-top: 56.25%;
     overflow: hidden;
-    background: #e9ecef;
+    background: linear-gradient(45deg, #FFF0F5 0%, #FFE4E1 100%);
 }
 
 #randomImage {
@@ -61,7 +94,11 @@ header h1 {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: opacity 0.5s ease;
+    transition: all 0.8s ease;
+}
+
+#randomImage:hover {
+    transform: scale(1.02);
 }
 
 .loading {
@@ -70,108 +107,206 @@ header h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1.4em;
-    color: #666;
-    background: rgba(255,255,255,0.9);
+    color: #FF69B4;
+    background: rgba(255, 255, 255, 0.9);
     padding: 20px 40px;
     border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.2);
+    border: 2px dashed #FFB6C1;
 }
 
 .image-info {
-    padding: 25px;
+    padding: 25px 30px;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #FFF9FA 100%);
 }
 
 .image-info h2 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1.8em;
+    color: #D81B60; /* 深粉色 */
+    margin-bottom: 15px;
+    font-size: 1.9em;
+    font-weight: 600;
+    border-left: 5px solid #FFB6C1;
+    padding-left: 15px;
 }
 
 .image-stats {
-    color: #666;
-    font-size: 1em;
-    padding: 10px 0;
+    color: #E91E63;
+    font-size: 1.1em;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFF0F5;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #FFE4E8;
+}
+
+.image-stats i {
+    color: #FF69B4;
 }
 
 .controls {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     margin: 40px 30px;
     flex-wrap: wrap;
 }
 
 .btn-primary, .btn-secondary {
-    padding: 15px 30px;
+    padding: 18px 35px;
     border: none;
     border-radius: 50px;
-    font-size: 1.1em;
+    font-size: 1.15em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
     font-weight: 600;
-    min-width: 180px;
+    min-width: 200px;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 粉色光晕效果 */
+.btn-primary::before, .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before, .btn-secondary:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* 粉色渐变按钮 */
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
     color: white;
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.5);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(255, 182, 193, 0.7);
 }
 
 .btn-secondary {
     background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #FF69B4;
+    border: 2px solid #FF69B4;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.2);
 }
 
 .btn-secondary:hover {
-    background: #667eea;
+    background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+    border-color: transparent;
 }
 
 footer {
     text-align: center;
-    padding: 25px;
-    color: #666;
-    border-top: 1px solid #eee;
+    padding: 30px;
+    color: #FF69B4;
+    background: rgba(255, 240, 245, 0.8);
+    border-top: 1px solid #FFE4E8;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* 添加心形装饰 */
+footer::before {
+    content: '❤';
+    color: #FFB6C1;
+    margin-right: 10px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 15px;
+        background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E8 100%);
+    }
+    
+    .container {
+        border-radius: 15px;
+        margin: 10px;
     }
     
     header {
-        padding: 20px 15px;
+        padding: 25px 15px;
+        border-radius: 15px 15px 0 0;
     }
     
     header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
+    }
+    
+    .subtitle {
+        font-size: 1.1em;
     }
     
     .image-container {
-        margin: 20px 15px;
+        margin: 20px;
+        border-radius: 15px;
     }
     
     .controls {
-        margin: 30px 15px;
+        margin: 30px 20px;
+        gap: 15px;
         flex-direction: column;
         align-items: center;
     }
     
     .btn-primary, .btn-secondary {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
+        padding: 16px 25px;
+        font-size: 1.1em;
+    }
+    
+    .image-info {
+        padding: 20px;
+    }
+    
+    footer {
+        padding: 25px 20px;
+        border-radius: 0 0 15px 15px;
+    }
+}
+
+/* 小屏幕优化 */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    .image-info h2 {
+        font-size: 1.6em;
+    }
+    
+    .btn-primary, .btn-secondary {
+        min-width: auto;
+        padding: 14px 20px;
     }
 }
