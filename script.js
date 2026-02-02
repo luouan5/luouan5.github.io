@@ -2,7 +2,7 @@
 const imageLibrary = {
     images: [
         {
-            filename: "乖乖小猪.jpg",
+            filename: "乖乖小猪.JPG",
             title: "美丽的风景",
             description: "这是第一张图片的描述，可以在这里添加更多详细信息。"
         },
