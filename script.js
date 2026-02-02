@@ -2,29 +2,39 @@
 const imageLibrary = {
     images: [
         {
-            filename: "image1.jpg",
+            filename: "乖乖小猪.jpg",
             title: "美丽的风景",
             description: "这是第一张图片的描述，可以在这里添加更多详细信息。"
         },
         {
-            filename: "image2.jpg",
+            filename: "趴趴猪.jpg",
             title: "城市夜景",
             description: "夜晚的城市灯光璀璨，展现出不一样的美丽。"
         },
         {
-            filename: "image3.jpg",
+            filename: "小山竹.jpg",
             title: "自然风光",
             description: "大自然的鬼斧神工，让人心旷神怡。"
         },
         {
-            filename: "image4.jpg",
+            filename: "小猪翻肚皮.jpg",
             title: "动物世界",
             description: "可爱的小动物们总是能给人带来欢乐。"
         },
         {
-            filename: "image5.jpg",
+            filename: "小猪看风景.jpg",
             title: "艺术创作",
             description: "艺术家的创作展现了无限的想象空间。"
+        },
+        {
+            filename: "小猪看你.jpg",
+            title: "动物世界",
+            description: "可爱的小动物们总是能给人带来欢乐。"
+        },
+        {
+            filename: "小猪眯眼.jpg",
+            title: "动物世界",
+            description: "可爱的小动物们总是能给人带来欢乐。"
         }
         // 你可以继续添加更多图片...
     ]
