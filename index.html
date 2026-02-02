@@ -3,88 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>随机图片展示 - luouan5</title>
+    <title>我的图片浏览器</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* 临时样式，直到 style.css 加载 */
-        body { margin: 0; padding: 20px; background: #f0f2f5; font-family: sans-serif; }
-        .loading { text-align: center; padding: 100px; font-size: 20px; }
-    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-random"></i> luouan5 的随机图片展示</h1>
-            <p class="subtitle">欢迎来到我的图片网站！每次刷新都有惊喜</p>
+            <h1><i class="fas fa-images"></i> 我的图片库</h1>
+            <p class="subtitle">点击按钮浏览图片</p>
         </header>
 
         <main>
             <div class="image-container">
                 <div class="image-wrapper">
-                    <img id="randomImage" src="" alt="随机图片">
+                    <img id="randomImage" src="" alt="当前图片">
                     <div class="loading" id="loading">
-                        <i class="fas fa-spinner fa-spin"></i> 正在加载图片...
+                        <i class="fas fa-spinner fa-spin"></i> 加载中...
                     </div>
                 </div>
                 
                 <div class="image-info">
-                    <h2 id="imageTitle">加载中...</h2>
-                    <p id="imageDescription">请稍候，图片正在加载</p>
+                    <h2 id="imageTitle">图片标题</h2>
+                    <p id="imageDescription">图片描述信息</p>
                     <div class="image-stats">
-                        <span><i class="fas fa-image"></i> 图库总数: <span id="totalImages">0</span></span>
-                        <span><i class="fas fa-clock"></i> 最后更新: <span id="lastUpdate">--:--:--</span></span>
+                        <span><i class="fas fa-image"></i> 图片: <span id="currentIndex">1</span>/<span id="totalImages">0</span></span>
                     </div>
                 </div>
             </div>
 
             <div class="controls">
-                <button id="randomBtn" class="btn-primary">
-                    <i class="fas fa-random"></i> 随机换一张
-                </button>
                 <button id="prevBtn" class="btn-secondary">
                     <i class="fas fa-chevron-left"></i> 上一张
                 </button>
+                <button id="randomBtn" class="btn-primary">
+                    <i class="fas fa-random"></i> 随机换一张
+                </button>
                 <button id="nextBtn" class="btn-secondary">
-                    <i class="fas fa-chevron-right"></i> 下一张
+                    下一张 <i class="fas fa-chevron-right"></i>
                 </button>
-                <button id="autoPlayBtn" class="btn-secondary">
-                    <i class="fas fa-play"></i> 自动播放 (3秒)
-                </button>
-            </div>
-
-            <div class="gallery-preview">
-                <h3><i class="fas fa-images"></i> 图片库预览</h3>
-                <p id="noImagesMessage" style="color: #666; padding: 20px; text-align: center; display: none;">
-                    <i class="fas fa-info-circle"></i> 暂无图片，请上传图片到 images 文件夹
-                </p>
-                <div id="thumbnailGallery" class="thumbnails">
-                    <!-- 缩略图动态生成 -->
-                </div>
-            </div>
-
-            <div class="upload-instructions">
-                <h3><i class="fas fa-cloud-upload-alt"></i> 如何上传图片？</h3>
-                <ol>
-                    <li>在仓库中创建 <code>images</code> 文件夹</li>
-                    <li>上传你的图片到 images 文件夹</li>
-                    <li>在 script.js 中配置图片信息</li>
-                    <li>刷新页面即可看到效果</li>
-                </ol>
             </div>
         </main>
 
         <footer>
-            <p>© 2024 luouan5 的图片网站 | 基于 GitHub Pages 构建</p>
-            <p class="github-link">
-                <i class="fab fa-github"></i> 
-                <a href="https://github.com/luouan5/luouan5.github.io" target="_blank">
-                    查看项目源码
-                </a> | 
-                <a href="https://github.com/luouan5/luouan5.github.io/upload/main/images" target="_blank">
-                    上传图片
-                </a>
-            </p>
+            <p>© 2024 我的图片浏览器</p>
         </footer>
     </div>
 
