@@ -6,13 +6,38 @@ const imageLibrary = {
     images: [
         // 示例图片 - 请替换为你自己的图片
         {
-            filename: "example1.jpg", // 你的图片文件名
-            title: "示例图片 1",
+            filename: "乖乖小猪.jpg", // 你的图片文件名
+            title: "乖乖小猪",
             description: "这是一个示例图片。请上传你的图片到 images 文件夹，并在这里配置。"
         },
         {
-            filename: "example2.jpg", // 你的图片文件名
-            title: "示例图片 2", 
+            filename: "趴趴猪.jpg", // 你的图片文件名
+            title: "趴趴猪", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小山竹.jpg", // 你的图片文件名
+            title: "小山竹", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小猪翻肚皮.jpg", // 你的图片文件名
+            title: "小猪翻肚皮", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小猪看风景.jpg", // 你的图片文件名
+            title: "小猪看风景", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小猪看你.jpg", // 你的图片文件名
+            title: "小猪看你", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小猪眯眼.jpg", // 你的图片文件名
+            title: "小猪眯眼", 
             description: "上传图片后，记得在 script.js 中更新文件名和描述。"
         }
         // 在这里添加更多图片...
