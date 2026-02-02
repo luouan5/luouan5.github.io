@@ -4,11 +4,42 @@
 const imageLibrary = {
     images: [
         {
+            filename: "乖乖小猪.jpg", // 你的图片文件名
+            title: "乖乖小猪",
+            description: "这是一个示例图片。请上传你的图片到 images 文件夹，并在这里配置。"
+        },
+        {
+            filename: "趴趴猪.jpg", // 你的图片文件名
+            title: "趴趴猪", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小山竹.jpg", // 你的图片文件名
+            title: "小山竹", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小猪翻肚皮.jpg", // 你的图片文件名
+            title: "小猪翻肚皮", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
             filename: "example1.jpg",
             title: "示例图片 1",
             description: "这是我的第一张图片"
         },
         {
+            filename: "小猪看风景.jpg", // 你的图片文件名
+            title: "小猪看风景", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小猪看你.jpg", // 你的图片文件名
+            title: "小猪看你", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
+        },
+        {
+            filename: "小猪眯眼.jpg", // 你的图片文件名
+            title: "小猪眯眼", 
+            description: "上传图片后，记得在 script.js 中更新文件名和描述。"
             filename: "example2.jpg", 
             title: "示例图片 2", 
             description: "这是我的第二张图片"
@@ -38,7 +69,7 @@ const lastUpdate = document.getElementById('lastUpdate');
 let currentIndex = 0;
 let autoPlayInterval = null;
 let isAutoPlaying = false;
-let hasStarted = false; // 新增：是否已开始浏览
+let hasStarted = false;
 
 // ================================
 // 初始化
@@ -59,7 +90,7 @@ function init() {
     // 生成缩略图
     generateThumbnails();
     
-    // 显示初始界面，不自动加载图片
+    // 显示初始界面
     showInitialScreen();
     
     // 设置事件监听器
@@ -162,7 +193,7 @@ function showImage(index) {
 }
 
 // ================================
-// 其他函数保持不变...
+// 缩略图相关
 // ================================
 function generateThumbnails() {
     thumbnailGallery.innerHTML = '';
@@ -171,6 +202,7 @@ function generateThumbnails() {
         const thumbnailDiv = document.createElement('div');
         thumbnailDiv.className = 'thumbnail';
         thumbnailDiv.dataset.index = index;
+        thumbnailDiv.title = `点击查看: ${image.title}`;
         
         const img = document.createElement('img');
         img.src = `images/${image.filename}`;
@@ -184,9 +216,9 @@ function generateThumbnails() {
         thumbnailDiv.appendChild(img);
         thumbnailGallery.appendChild(thumbnailDiv);
         
+        // 点击缩略图也可以查看图片
         thumbnailDiv.addEventListener('click', () => {
             if (!hasStarted) {
-                // 如果还没开始，点击缩略图也视为开始
                 hasStarted = true;
                 randomBtn.innerHTML = '<i class="fas fa-random"></i> 随机换一张';
                 updateButtonsState(true);
@@ -202,6 +234,9 @@ function updateThumbnailSelection() {
     });
 }
 
+// ================================
+// 图片切换函数（只能通过按钮调用）
+// ================================
 function getRandomIndex() {
     if (imageLibrary.images.length <= 1) return 0;
     
@@ -234,6 +269,9 @@ function updateLastUpdateTime() {
     });
 }
 
+// ================================
+// 自动播放功能
+// ================================
 function toggleAutoPlay() {
     if (!hasStarted) return;
     
@@ -252,73 +290,92 @@ function startAutoPlay() {
     }, 3000);
     
     autoPlayBtn.innerHTML = '<i class="fas fa-pause"></i> 停止播放';
+    autoPlayBtn.classList.add('playing');
     isAutoPlaying = true;
 }
 
 function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+    }
     autoPlayBtn.innerHTML = '<i class="fas fa-play"></i> 自动播放';
+    autoPlayBtn.classList.remove('playing');
     isAutoPlaying = false;
 }
 
 // ================================
-// 事件监听器
+// 事件监听器 - 只保留按钮控制
 // ================================
 function setupEventListeners() {
-    // 随机/开始按钮
-    randomBtn.addEventListener('click', () => {
-        const randomIndex = getRandomIndex();
-        showImage(randomIndex);
-        
-        randomBtn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            randomBtn.style.transform = '';
-        }, 150);
-    });
+    // 随机/开始按钮 - 主要控制按钮
+    randomBtn.addEventListener('click', handleRandomClick);
     
-    // 上一张/下一张
-    prevBtn.addEventListener('click', prevImage);
-    nextBtn.addEventListener('click', nextImage);
+    // 上一张按钮
+    prevBtn.addEventListener('click', handlePrevClick);
     
-    // 自动播放
-    autoPlayBtn.addEventListener('click', toggleAutoPlay);
+    // 下一张按钮
+    nextBtn.addEventListener('click', handleNextClick);
     
-    // 键盘快捷键
-    document.addEventListener('keydown', (e) => {
-        if (!hasStarted) return;
-        
-        switch(e.key) {
-            case 'ArrowLeft':
-                e.preventDefault();
-                prevImage();
-                break;
-            case 'ArrowRight':
-                e.preventDefault();
-                nextImage();
-                break;
-            case ' ':
-                e.preventDefault();
-                const randomIndex = getRandomIndex();
-                showImage(randomIndex);
-                break;
-            case 'a':
-            case 'A':
-                e.preventDefault();
-                toggleAutoPlay();
-                break;
-        }
-    });
+    // 自动播放按钮
+    autoPlayBtn.addEventListener('click', handleAutoPlayClick);
     
-    // 鼠标滚轮
-    document.addEventListener('wheel', (e) => {
-        if (!hasStarted) return;
-        
-        if (e.deltaY > 0) {
-            nextImage();
-        } else if (e.deltaY < 0) {
-            prevImage();
-        }
-    });
+    // 可选：保留空格键作为随机按钮的快捷键
+    document.addEventListener('keydown', handleKeyPress);
+}
+
+// 按钮点击处理函数
+function handleRandomClick() {
+    const randomIndex = getRandomIndex();
+    showImage(randomIndex);
+    
+    // 按钮点击动画
+    animateButton(randomBtn);
+}
+
+function handlePrevClick() {
+    if (!hasStarted) return;
+    prevImage();
+    animateButton(prevBtn);
+}
+
+function handleNextClick() {
+    if (!hasStarted) return;
+    nextImage();
+    animateButton(nextBtn);
+}
+
+function handleAutoPlayClick() {
+    if (!hasStarted) return;
+    toggleAutoPlay();
+    animateButton(autoPlayBtn);
+}
+
+// 按钮动画效果
+function animateButton(button) {
+    button.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        button.style.transform = '';
+    }, 150);
+}
+
+// 键盘处理（可选：只保留空格键）
+function handleKeyPress(e) {
+    if (!hasStarted) return;
+    
+    // 只响应空格键
+    if (e.key === ' ') {
+        e.preventDefault();
+        handleRandomClick();
+    }
+}
+
+// ================================
+// 辅助函数
+// ================================
+function showNoImagesMessage() {
+    imageTitle.textContent = '暂无图片';
+    imageDescription.textContent = '请上传图片到 images 文件夹';
+    thumbnailGallery.innerHTML = '<p style="text-align:center;color:#666;padding:40px;">还没有图片，快去上传吧！</p>';
 }
 
 // ================================
